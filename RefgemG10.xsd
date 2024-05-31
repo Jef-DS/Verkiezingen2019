@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:agiv="http://www.agiv.be/agiv" targetNamespace="http://www.agiv.be/agiv" elementFormDefault="qualified">
+    <xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/2.1.2/feature.xsd" />
+    <xs:element name="FeatureCollection" type="agiv:FeatureCollectionType" substitutionGroup="gml:_FeatureCollection" />
+    <xs:element name="RefgemG10" type="agiv:RefgemG10Type" substitutionGroup="gml:_Feature" />
+    <xs:complexType name="FeatureCollectionType">
+        <xs:complexContent>
+            <xs:extension base="gml:AbstractFeatureCollectionType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RefgemG10Type">
+        <xs:complexContent>
+            <xs:extension base="gml:AbstractFeatureType">
+                <xs:sequence>
+                    <xs:element name="OIDN" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="15" />
+                                <xs:fractionDigits value="0" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="UIDN" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="15" />
+                                <xs:fractionDigits value="0" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="TERRID" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="10" />
+                                <xs:fractionDigits value="0" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="DATPUBLBS" minOccurs="0" type="xs:date" />
+                    <xs:element name="NUMAC" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:maxLength value="10" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="NISCODE" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:maxLength value="5" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="NAAM" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:maxLength value="64" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="LENGTE" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="15" />
+                                <xs:fractionDigits value="2" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="OPPERVL" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:totalDigits value="15" />
+                                <xs:fractionDigits value="2" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:choice>
+                        <xs:element ref="gml:polygonProperty" />
+                        <xs:element ref="gml:multiPolygonProperty" />
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
